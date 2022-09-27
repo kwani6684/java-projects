@@ -17,7 +17,6 @@ abstract class Player{
 	public String getName() {
 		return name;
 	}
-	
 }
 
 class Human extends Player{
@@ -52,20 +51,21 @@ class Computer extends Player{
 	}	
 	@Override
 	public void setValue() {
-		System.out.print(this.name+">> 결정하였습니다.");
+		System.out.print(this.name+">> 결정하였습니다.\n");
 		Random random = new Random();
 		lastValue = value[random.nextInt(value.length)];
-		System.out.println("");
 	}
 }
-public class Game {
+class Game {
 	protected Scanner scanner = new Scanner(System.in);
 	private final int COUNT = 2;
 	private Player players[];
 	public Game() {
+		System.out.println("묵찌빠 게임을 시작합니다.");
 		players = new Player[COUNT];
 		makeHumanPlayer();
 		makeComputerPlayer();
+		System.out.println(COUNT+"명의 선수를 생성 완료했습니다.\n");
 	}
 	public void makeHumanPlayer() {
 		System.out.print("선수이름 입력 >>");
@@ -116,12 +116,10 @@ public class Game {
 			return true;
 		}
 	}
-
-
+}
+public class MGPApp{
 	public static void main(String[] args) {
-		
 		Game game =  new Game();
 		game.runGame();
 	}
-
 }
